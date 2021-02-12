@@ -14,3 +14,5 @@ Route::get('/home', 'HomeController@index')
 
 Route::post('/upload', 'ImageController@upload')
     ->name('upload');
+Route::get('/delete/avatar', 'imageController@deleteDb')
+    ->name('delete-avatar');
