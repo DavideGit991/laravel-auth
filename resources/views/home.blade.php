@@ -21,7 +21,7 @@
 
                     <input name='iconUser' type="file" enctype="multipart/form-data">
 
-                    <input type="submit">
+                    <input type="submit" value="Invia">
                 </form>
 
                 </div>

@@ -9,26 +9,25 @@ use Illuminate\Support\Facades\File;
 
 class ImageController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function upload(Request $req)
     {
-        dd($req);
-        //  $req->validate([
-        //      'iconUser'=> 'required|file|size:2048'
-        //  ]);
 
-        $image=$req->file('iconUser');
-            dd($image);
+          $req->validate([
+              'iconUser'=> 'required|file|size:2048'
+         ]);
+
+        $image= $req ->file ('iconUser');
+
         $ext= $image->getClientOriginalExtension();
-
         $nameimg=rand(100000,999999) . '_' . time();
         $fullname=$nameimg . '.' . $ext;
 
-        $file = $image->storeAs('storage/app/public/avatar',$fullname);
+        $file = $image->storeAs('avatar',$fullname,'public');
 
         $user=Auth::user();
         $user->avatar_name = $fullname;
